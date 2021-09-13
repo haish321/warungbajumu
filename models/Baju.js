@@ -22,7 +22,7 @@ const bajuSchema = new mongoose.Schema({
         required: true
     },
     deskripsi: {
-        type: Text,
+        type: String,
         required: false
     },
     // status: {
@@ -34,3 +34,6 @@ const bajuSchema = new mongoose.Schema({
     //     required: false
     // }
 })
+
+
+module.exports = mongoose.model("Baju", bajuSchema);
