@@ -13,11 +13,22 @@
     <div class="container mt-5">
       <h2 class="text-center">Admin Data Baju</h2>
       <div class="row mt-3">
+        <!-- Alert -->
+        <div class="col-auto col-lg-12 mt-2">
+          <% if(alert.message != "") { %>
+          <div class="alert alert-<%= alert.status %>" role="alert">
+            <%= alert.message %>
+          </div>
+          <% } %>
+        </div>
         <!-- Table -->
-        <div class="col-auto col-lg-12 mt-2"><%- include('../partials/table.ejs') %></div>
+        <div class="col-auto col-lg-12 mt-2"><%- include('./table.ejs') %></div>
       </div>
     </div>
+    <!-- Add Modal -->
+    <%- include('./add_modal.ejs') %>
     <!-- JS -->
-    <%- include('../partials/js.ejs') %>
+    <%- include('../../partials/js.ejs') %>
+
   </body>
 </html>
