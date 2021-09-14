@@ -56,5 +56,21 @@ module.exports = {
             req.flash("alertStatus", "danger");
             res.redirect("/admin/baju");
         }
+    },
+
+    deleteBaju: async(req, res) => {
+        try {
+            const { id } = req.params;
+            const baju = await Baju.findOne({ _id: id });
+            await baju.remove();
+
+            req.flash("alertMessage", "Succes Delete data Baju");
+            req.flash("alertStatus", "warning");
+            res.redirect("/admin/baju");
+        } catch (error) {
+            req.flash("alertMessage", `${error.message}`);
+            req.flash("alertStatus", "danger");
+            res.redirect("/admin/baju");
+        }
     }
 }
