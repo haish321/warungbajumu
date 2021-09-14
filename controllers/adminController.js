@@ -32,5 +32,29 @@ module.exports = {
             req.flash("alertStatus", "danger");
             res.redirect("/admin/baju");
         }
+    },
+
+    editBaju: async(req, res) => {
+        try {
+            const { id, nama, lingkar_dada, panjang, kondisi, harga, deskripsi } = req.body;
+            const baju = await Baju.findOne({ _id: id })
+
+            baju.nama = nama;
+            baju.lingkar_dada = lingkar_dada;
+            baju.panjang = panjang
+            baju.kondisi = kondisi;
+            baju.harga = harga;
+            baju.deskripsi = deskripsi;
+            await baju.save()
+
+            req.flash("alertMessage", "Succes Edit data Baju");
+            req.flash("alertStatus", "success");
+            res.redirect("/admin/baju");
+
+        } catch (error) {
+            req.flash("alertMessage", `${error.message}`);
+            req.flash("alertStatus", "danger");
+            res.redirect("/admin/baju");
+        }
     }
 }

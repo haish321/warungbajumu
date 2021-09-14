@@ -1,0 +1,96 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="edit-modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Data baju</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/admin/baju?_method=PUT" method="POST">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="name">Nama baju</label>
+            <input
+              type="text"
+              class="form-control nama"
+              name="nama"
+              nama="Enter Nama baju"
+              
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Lingkar Dada</label>
+            <input
+              type="text"
+              class="form-control lingkar_dada"
+              name="lingkar_dada"
+              nama="Enter lingkar_dada"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Panjang</label>
+            <input
+              type="text"
+              class="form-control panjang"
+              name="panjang"
+              nama="Enter Panjang"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Kondisi</label>
+            <input
+              type="text"
+              class="form-control kondisi"
+              name="kondisi"
+              nama="Enter kondisi"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Harga</label>
+            <input
+              type="text"
+              class="form-control harga"
+              name="harga"
+              nama="Enter harga"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Deskripsi</label>
+            <textarea
+              type="text"
+              class="form-control deskripsi"
+              name="deskripsi"
+              nama="Enter Deskripsi"
+              rows="3"
+            ></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="hidden" class="id" name="id" />
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

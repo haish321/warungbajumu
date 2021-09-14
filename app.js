@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan'); // use this to connect databases mongodb
 const mongoose = require("mongoose");
+const methodOverride = require("method-override"); // library override
 
 var flash = require("connect-flash");
 var session = require("express-session");
@@ -32,6 +33,8 @@ mongoose.connect(url, { useUnifiedTopology : true, useNewUrlParser : true , }).t
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// menggunakan method override
+app.use(methodOverride("_method"));
 
 // menggunakan sessionm
 app.use(
