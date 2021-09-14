@@ -5,7 +5,7 @@ const bajuSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    lingkarDada: {
+    lingkar_dada: {
         type: String,
         required: false,
     },

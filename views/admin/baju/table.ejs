@@ -32,23 +32,23 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td class="text-center">
-                <a href="#" class="btn btn-outline-warning btn-sm button-update"
-                  >Edit</a
-                >
-                <button type="submit" class="btn btn-outline-danger btn-sm">
-                  Delete
-                </button>
-              </td>
-            </tr>
+            <% for(let i = 0; i < baju.length; i++) { %>
+              <tr>
+                <td><%= i+1 %></td>
+                <td><%= baju[i].nama %></td>
+                <td><%= baju[i].lingkar_dada %></td>
+                <td><%= baju[i].panjang %></td>
+                <td><%= baju[i].kondisi %></td>
+                <td><%= baju[i].harga %></td>
+                <td><%= baju[i].deskripsi %></td>
+                <td class="text-center">
+                  <a href="#" class="btn btn-outline-warning btn-sm button-update">Edit</a>
+                  <button type="submit" class="btn btn-outline-danger btn-sm">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            <% } %>
           </tbody>
         </table>
       </div>
