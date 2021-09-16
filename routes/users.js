@@ -10,4 +10,6 @@ const usersController = require('../controllers/usersController');
 
 router.get("/", usersController.viewUser);
 
+router.get("/:id", usersController.detailViewUser);
+
 module.exports = router;
