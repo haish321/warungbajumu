@@ -11,7 +11,7 @@ module.exports = {
 
     detailViewUser: async(req, res) => {
         try {
-            res.render("users/detail_view")
+            res.render("users/detail-baju/detail_view")
         } catch (error) {
             res.redirect("/users/detail_view")
         }
