@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema; 
 
 const bajuSchema = new mongoose.Schema({
     nama: {
@@ -25,14 +26,16 @@ const bajuSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+     // satu item mempunyai banyak image
+    imageId: [{
+        type: ObjectId,
+        ref: 'Image'
+    }],
     // status: {
     //     type: String,
     //     require: false
     // },
-    // image: {
-    //     type: String,
-    //     required: false
-    // }
+    
 })
 
 

@@ -20,7 +20,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="/admin/baju" method="POST">
+      <form action="/admin/baju" method="POST" enctype="multipart/form-data">
         <div class="modal-body">
           <div class="form-group">
             <label for="name">Nama Baju</label>
@@ -74,6 +74,17 @@
               id="harga"
               name="harga"
               placeholder="Enter Harga"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Image</label>
+            <input
+              type="file"
+              class="form-control"
+              id="image"
+              name="image"
+              multiple 
               required
             />
           </div>
