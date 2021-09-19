@@ -26,11 +26,15 @@ const bajuSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    imageUrl: {
+        type: String,
+        required: true
+    },
      // satu item mempunyai banyak image
-    imageId: [{
-        type: ObjectId,
-        ref: 'Image'
-    }],
+    // imageId: [{
+    //     type: ObjectId,
+    //     ref: 'Image'
+    // }],
     // status: {
     //     type: String,
     //     require: false

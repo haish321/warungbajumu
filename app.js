@@ -19,7 +19,7 @@ const url = "mongodb://localhost:27017/db_warungbajumu"; /* path of your db */;
 
 //to connect or create our database
 mongoose.connect(url, { useUnifiedTopology : true, useNewUrlParser : true , }).then(() => {
-   console.log("Connection successfull");
+   console.log("Database Connection successfull");
 }).catch((e) => console.log("No connection"))
 
 // mongoose.connect("mongodb://localhost:27017/db_warungbajumu",{

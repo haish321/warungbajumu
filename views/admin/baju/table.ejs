@@ -28,6 +28,7 @@
               <th>Kondisi</th>
               <th>Harga</th>
               <th>Deskripsi</th>
+              <th>Image</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -41,6 +42,10 @@
                 <td><%= baju[i].kondisi %></td>
                 <td><%= baju[i].harga %></td>
                 <td><%= baju[i].deskripsi %></td>
+                <td>
+                  <img src="http://localhost:3000/<%= baju[i].imageUrl %>" alt="Image" height="70px" width="70px">
+              </td>
+
                 <td class="text-center">
                   
                   <form action="/admin/baju/<%= baju[i].id %>?_method=DELETE" method="POST">

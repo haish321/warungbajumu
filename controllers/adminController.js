@@ -16,7 +16,7 @@ module.exports = {
             res.render("admin/baju/view_baju",{
                 baju,
                 alert,
-                title: "CRUD"
+                title: "warungbajumu"
             })
         } catch(e){
             res.redirect('/admin/baju')
@@ -26,26 +26,51 @@ module.exports = {
     addBaju: async(req, res) => {
         try {
             const { nama, lingkar_dada, panjang, kondisi, harga, deskripsi } = req.body;
-            console.log(req.files)
-            if(req.files.length > 0){
-                const newBaju = { nama, lingkar_dada, panjang, kondisi, harga, deskripsi }                
-                const baju = await Baju.create(newBaju);
-                for(let i = 0; i < req.files.length; i++){
-                    const imageSave =  await Image.create({ imageUrl: `images/${req.files[i].filename}`})
-                    baju.imageId.push({ _id: imageSave._id});
-                    await baju.save();
+            console.log(req.file)
+            await Baju.create({
+                nama, 
+                lingkar_dada, 
+                panjang, 
+                kondisi, 
+                harga, 
+                deskripsi,
+                imageUrl : `images/${req.file.filename}`
+            })
 
-                }
-                req.flash("alertMessage", "Succes add data Baju");
-                req.flash("alertStatus", "success");
-                res.redirect("/admin/baju");
-            }
+            req.flash("alertMessage", "Succes add data Baju");
+            req.flash("alertStatus", "success");
+            res.redirect("/admin/baju");
+            
         } catch (error) {
             req.flash("alertMessage", `${error.message}`);
             req.flash("alertStatus", "danger");
             res.redirect("/admin/baju");
         }
     },
+
+    // addBaju: async(req, res) => {
+    //     try {
+    //         const { nama, lingkar_dada, panjang, kondisi, harga, deskripsi } = req.body;
+    //         console.log(req.files)
+    //         if(req.files.length > 0){
+    //             const newBaju = { nama, lingkar_dada, panjang, kondisi, harga, deskripsi }                
+    //             const baju = await Baju.create(newBaju);
+    //             for(let i = 0; i < req.files.length; i++){
+    //                 const imageSave =  await Image.create({ imageUrl: `images/${req.files[i].filename}`})
+    //                 baju.imageId.push({ _id: imageSave._id});
+    //                 await baju.save();
+
+    //             }
+    //             req.flash("alertMessage", "Succes add data Baju");
+    //             req.flash("alertStatus", "success");
+    //             res.redirect("/admin/baju");
+    //         }
+    //     } catch (error) {
+    //         req.flash("alertMessage", `${error.message}`);
+    //         req.flash("alertStatus", "danger");
+    //         res.redirect("/admin/baju");
+    //     }
+    // },
 
    
     editBaju: async(req, res) => {
