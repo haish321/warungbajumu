@@ -12,15 +12,15 @@ const bajuSchema = new mongoose.Schema({
     },
     panjang: {
         type: String,
-        required: true
+        required: false
     },
     kondisi: {
         type: String,
-        required: true
+        required: false
     },
     harga: {
         type: String,
-        required: true
+        required: false
     },
     deskripsi: {
         type: String,
