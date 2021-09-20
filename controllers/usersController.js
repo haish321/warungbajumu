@@ -28,5 +28,21 @@ module.exports = {
         } catch (error) {
             res.redirect("/users/detail_view")
         }
+    },
+
+    testimonialUsers: async(req, res) => {
+        try {
+            res.render("users/testi_page")           
+        } catch (error) {
+            res.redirect("/users/view_users")
+        }
+    },
+
+    about: async(req, res) => {
+        try {
+            res.render("users/about")
+        } catch (error) {
+            res.redirect("/users/view_users")
+        }
     }
 }

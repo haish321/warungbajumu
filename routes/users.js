@@ -12,4 +12,7 @@ router.get("/", usersController.viewUser);
 
 router.get("/detail-baju/:id", usersController.detailViewUser);
 
+router.get("/testimonials", usersController.testimonialUsers)
+router.get("/about", usersController.about)
+
 module.exports = router;
