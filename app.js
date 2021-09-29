@@ -15,19 +15,20 @@ var usersRouter = require('./routes/users');
 const adminRouter = require('./routes/admin');
 
 var app = express();
-const url = "mongodb://localhost:27017/db_warungbajumu"; /* path of your db */;
+
+// const url = "mongodb://had321:coyg212a@clusterfree-shard-00-00.rots5.mongodb.net:27017,clusterfree-shard-00-01.rots5.mongodb.net:27017,clusterfree-shard-00-02.rots5.mongodb.net:27017/dbwarungbajumu?ssl=true&replicaSet=atlas-md8nes-shard-0&authSource=admin&retryWrites=true&w=majority" /* path of your db */
 
 //to connect or create our database
-mongoose.connect(url, { useUnifiedTopology : true, useNewUrlParser : true , }).then(() => {
-   console.log("Database Connection successfull");
-}).catch((e) => console.log("No connection"))
+// mongoose.connect(url, { useUnifiedTopology : true, useNewUrlParser : true, useCreateIndex: true, useFindAndModify: false,}).then(() => {
+//    console.log("Database Connection successfull");
+// }).catch((e) => console.log("No connection"))
 
-// mongoose.connect("mongodb://localhost:27017/db_warungbajumu",{
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useCreateIndex: true,
-//   useFindAndModify: false,
-// });
+mongoose.connect("mongodb://had321:coyg212a@clusterfree-shard-00-00.rots5.mongodb.net:27017,clusterfree-shard-00-01.rots5.mongodb.net:27017,clusterfree-shard-00-02.rots5.mongodb.net:27017/dbwarungbajumu?ssl=true&replicaSet=atlas-md8nes-shard-0&authSource=admin&retryWrites=true&w=majority",{
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  // useCreateIndex: true,
+  // useFindAndModify: false,
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
