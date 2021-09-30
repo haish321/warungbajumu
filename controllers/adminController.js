@@ -1,5 +1,4 @@
 const Baju = require("../models/Baju");
-const Image = require('../models/Image');
 const fs = require('fs-extra')
 const path = require('path')
 

@@ -10,7 +10,7 @@ var flash = require("connect-flash");
 var session = require("express-session");
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var warungRouter = require('./routes/warung');
 // admin baju router
 const adminRouter = require('./routes/admin');
 
@@ -56,10 +56,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 // static file to dinamic
-app.use('/assets', express.static(path.join(__dirname, 'views/users/assets')));
+app.use('/assets', express.static(path.join(__dirname, 'views/warung/assets')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/warung', warungRouter);
 
 // use router adminRouter
 app.use("/admin", adminRouter)

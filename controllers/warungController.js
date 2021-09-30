@@ -3,46 +3,46 @@ const fs = require('fs-extra')
 const path = require('path');
 
 module.exports = {
-    viewUser: async(req, res) => {
+    viewWarung: async(req, res) => {
         try {
             const baju = await Baju.find()
                 // .populate({ path: 'imageId', select: 'id imageUrl'})
             // console.log(baju)
 
-            res.render("users/view_users",{
+            res.render("warung/view_warung",{
                 baju
             })
         } catch (error) {
-            res.redirect("/users/view_users")
+            res.redirect("/warung/view_warung")
         }
     },
 
-    detailViewUser: async(req, res) => {
+    detailViewWarung: async(req, res) => {
         const { id } = req.params
         try {
             const baju = await Baju.findOne({ _id: id })
                 // .populate({ path: 'imageId', select: 'id imageUrl'})
             console.log(baju.imageUrl)
 
-            res.render("users/detail-baju/detail_view",{ baju })
+            res.render("warung/detail-baju/detail_view",{ baju })
         } catch (error) {
-            res.redirect("/users/detail_view")
+            res.redirect("/warung/detail_view")
         }
     },
 
-    testimonialUsers: async(req, res) => {
+    testimonialWarung: async(req, res) => {
         try {
-            res.render("users/testi_page")           
+            res.render("warung/testi_page")           
         } catch (error) {
-            res.redirect("/users/view_users")
+            res.redirect("/warung/view_warung")
         }
     },
 
     about: async(req, res) => {
         try {
-            res.render("users/about")
+            res.render("warung/about")
         } catch (error) {
-            res.redirect("/users/view_users")
+            res.redirect("/warung/view_warung")
         }
     }
 }
