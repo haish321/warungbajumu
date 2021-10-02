@@ -16,14 +16,10 @@ const adminRouter = require('./routes/admin');
 
 var app = express();
 
-// const url = "mongodb://had321:coyg212a@clusterfree-shard-00-00.rots5.mongodb.net:27017,clusterfree-shard-00-01.rots5.mongodb.net:27017,clusterfree-shard-00-02.rots5.mongodb.net:27017/dbwarungbajumu?ssl=true&replicaSet=atlas-md8nes-shard-0&authSource=admin&retryWrites=true&w=majority" /* path of your db */
+const dotenv = require("dotenv")
+dotenv.config();
 
-//to connect or create our database
-// mongoose.connect(url, { useUnifiedTopology : true, useNewUrlParser : true, useCreateIndex: true, useFindAndModify: false,}).then(() => {
-//    console.log("Database Connection successfull");
-// }).catch((e) => console.log("No connection"))
-
-mongoose.connect("mongodb://had321:coyg212a@clusterfree-shard-00-00.rots5.mongodb.net:27017,clusterfree-shard-00-01.rots5.mongodb.net:27017,clusterfree-shard-00-02.rots5.mongodb.net:27017/dbwarungbajumu?ssl=true&replicaSet=atlas-md8nes-shard-0&authSource=admin&retryWrites=true&w=majority",{
+mongoose.connect(process.env.MONGO_URI,{
   useNewUrlParser: true,
   useUnifiedTopology: true,
   // useCreateIndex: true,

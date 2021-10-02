@@ -30,6 +30,9 @@ const bajuSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    cloudinary_id:{
+        type: String
+    }
      // satu item mempunyai banyak image
     // imageId: [{
     //     type: ObjectId,
