@@ -1,6 +1,7 @@
 const Baju = require("../models/Baju");
 const fs = require('fs-extra')
 const path = require('path')
+const cloudinary = require('cloudinary')
 
 
 module.exports = {
@@ -24,18 +25,21 @@ module.exports = {
 
     addBaju: async(req, res) => {
         try {
-            const { nama, lingkar_dada, panjang, kondisi, harga, deskripsi } = req.body;
+            const { nama, merek, lingkar_dada, panjang, kondisi, harga, deskripsi } = req.body;
             console.log(req.file)
+            let result = cloudinary.uploader.upload(`images/${req.file.filename}`)
             await Baju.create({
                 nama, 
+                merek,
                 lingkar_dada, 
                 panjang, 
                 kondisi, 
                 harga, 
                 deskripsi,
-                imageUrl : `images/${req.file.filename}`
+                imageUrl : `images/${req.file.filename}`,
+                cloudinary_id: result.public_id
             })
-
+            
             req.flash("alertMessage", "Succes add data Baju");
             req.flash("alertStatus", "success");
             res.redirect("/admin/baju");
@@ -46,14 +50,32 @@ module.exports = {
             res.redirect("/admin/baju");
         }
     },
+
+    addBajuCloudinary: async(req, res) => {
+        try {
+            const { nama, merek, lingkar_dada, panjang, kondisi, harga, deskripsi } = req.body;
+            let result = cloudinary.uploader.upload(req.file)
+            // res.json(result)
+            let baju = new Baju({
+                nama, merek, lingkar_dada, panjang, kondisi, harga, deskripsi,
+                avatar: result.secure_url,
+                cloudinary_id: result.public_id
+            })
+            await baju.save()
+            res.json(baju)
+        } catch (error) {
+            console.error(error)
+        }
+    },
    
     editBaju: async(req, res) => {
         try {
-            const { id, nama, lingkar_dada, panjang, kondisi, harga, deskripsi } = req.body;
+            const { id, nama, merek, lingkar_dada, panjang, kondisi, harga, deskripsi } = req.body;
             const baju = await Baju.findOne({ _id: id })
 
             if(req.file == undefined){
                 baju.nama = nama;
+                baju.merek = merek;
                 baju.lingkar_dada = lingkar_dada;
                 baju.panjang = panjang
                 baju.kondisi = kondisi;

@@ -6,6 +6,10 @@ const bajuSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    merek: {
+        type: String,
+        required: false
+    },
     lingkar_dada: {
         type: String,
         required: false,
@@ -29,6 +33,9 @@ const bajuSchema = new mongoose.Schema({
     imageUrl: {
         type: String,
         required: false
+    },
+    avatar: {
+        type: String
     },
     cloudinary_id:{
         type: String
