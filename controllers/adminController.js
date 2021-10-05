@@ -94,7 +94,11 @@ module.exports = {
     deleteBaju: async(req, res) => {
         try {
             const { id } = req.params;
+            // find baju by id
             const baju = await Baju.findOne({ _id: id });
+            // Delete image from cloudianry
+            await cloudinary.uploader.destroy(baju.cloudinary_id);
+            // delete baju in mongodb 
             await baju.remove();
 
             req.flash("alertMessage", "Succes Delete data Baju");
