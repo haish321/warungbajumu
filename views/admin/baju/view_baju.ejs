@@ -36,6 +36,7 @@
       $("#dataTable").on("click", ".button-update", function(){
         let id = $(this).data("id");
         let nama = $(this).data("nama");
+        let merek = $(this).data("merek");
         let lingkar_dada = $(this).data("lingkar_dada");
         let panjang = $(this).data("panjang");
         let kondisi = $(this).data("kondisi");
@@ -50,6 +51,7 @@
            dan valuenya mengambil dari setiap let yang dideklarasikan di atas */
         $(".id").val(id);
         $(".nama").val(nama);
+        $(".merek").val(merek);
         $(".lingkar_dada").val(lingkar_dada);
         $(".panjang").val(panjang);
         $(".kondisi").val(kondisi);

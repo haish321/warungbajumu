@@ -23,6 +23,7 @@
             <tr>
               <th>No</th>
               <th>Nama Baju</th>
+              <th>Merek</th>
               <th>Lingkar Dada</th>
               <th>Panjang</th>
               <th>Kondisi</th>
@@ -37,6 +38,7 @@
               <tr>
                 <td><%= i+1 %></td>
                 <td><%= baju[i].nama %></td>
+                <td><%= baju[i].merek %></td>
                 <td><%= baju[i].lingkar_dada %></td>
                 <td><%= baju[i].panjang %></td>
                 <td><%= baju[i].kondisi %></td>
@@ -56,6 +58,7 @@
                     
                     data-id = "<%= baju[i].id %>" 
                     data-nama = "<%= baju[i].nama %>"
+                    data-merek = "<%= baju[i].merek %>"
                     data-lingkar_dada = "<%= baju[i].lingkar_dada %>"
                     data-panjang = "<%= baju[i].panjang %>"
                     data-kondisi = "<%= baju[i].kondisi %>"

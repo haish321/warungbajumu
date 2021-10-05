@@ -6,6 +6,10 @@ const bajuSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    merek: {
+        type: String,
+        required: false
+    },
     lingkar_dada: {
         type: String,
         required: false,

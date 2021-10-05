@@ -24,12 +24,13 @@ module.exports = {
 
     addBaju: async(req, res) => {
         try {
-            const { nama, lingkar_dada, panjang, kondisi, harga, deskripsi } = req.body;
+            const { nama, merek, lingkar_dada, panjang, kondisi, harga, deskripsi } = req.body;
             // console.log(req.file)
            const resultCloudinary = await cloudinary.uploader.upload(req.file.path)
            
             await Baju.create({
                 nama, 
+                merek,
                 lingkar_dada, 
                 panjang, 
                 kondisi, 
@@ -53,11 +54,12 @@ module.exports = {
    
     editBaju: async(req, res) => {
         try {
-            const { id, nama, lingkar_dada, panjang, kondisi, harga, deskripsi } = req.body;
+            const { id, nama, merek, lingkar_dada, panjang, kondisi, harga, deskripsi } = req.body;
             const baju = await Baju.findOne({ _id: id })
 
             if(req.file == undefined){
                 baju.nama = nama;
+                baju.merek = merek;
                 baju.lingkar_dada = lingkar_dada;
                 baju.panjang = panjang
                 baju.kondisi = kondisi;
