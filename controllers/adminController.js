@@ -1,7 +1,7 @@
 const Baju = require("../models/Baju");
 const fs = require('fs-extra')
 const path = require('path')
-
+const cloudinary = require('../utils/cloudinary')
 
 module.exports = {
     viewBaju: async (req, res) => {
@@ -25,7 +25,9 @@ module.exports = {
     addBaju: async(req, res) => {
         try {
             const { nama, lingkar_dada, panjang, kondisi, harga, deskripsi } = req.body;
-            console.log(req.file)
+            // console.log(req.file)
+           const resultCloudinary = await cloudinary.uploader.upload(req.file.path)
+           
             await Baju.create({
                 nama, 
                 lingkar_dada, 
@@ -33,7 +35,9 @@ module.exports = {
                 kondisi, 
                 harga, 
                 deskripsi,
-                imageUrl : `images/${req.file.filename}`
+                imageUrl : `images/${req.file.filename}`,
+                cloudinary_id : resultCloudinary.public_id,
+                cloudinaryImageUrl : resultCloudinary.secure_url
             })
 
             req.flash("alertMessage", "Succes add data Baju");
